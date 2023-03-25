@@ -1,0 +1,178 @@
+/* Fonte do Google - Poppins */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/* CSS root */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    #212529,
+    #20262c,
+    #2a363f,
+    #32434f,
+    #3c5464
+  );
+  color: #ffffff;
+}
+
+html,
+body {
+  background-attachment: fixed;
+  height: auto;
+  /* background-size: cover;
+  width: 100%;
+   */
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+/* ul {
+  list-style: none;
+} */
+
+li {
+  padding: 8px 0 0 8px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* CSS reutilizável */
+
+.section {
+  padding: 6rem 0 6rem;
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn-color {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #3c5464;
+  --bs-btn-border-color: #3c5464;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #57768b;
+  --bs-btn-hover-border-color: #57768b;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #5a7c92;
+  --bs-btn-active-border-color: #5a7c92;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #3c5464;
+  --bs-btn-disabled-border-color: #3c5464;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #57768b;
+}
+
+/* Scroll da página */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #212529;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #57768b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aad4da;
+}
+
+/* Aparelhos grandes */
+
+@media screen and (max-width: 992px) {
+  .container {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .button {
+    padding: 1rem 1.75rem;
+  }
+
+  .button__icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Aparelhos médios */
+@media screen and (max-width: 768px) {
+  body {
+    margin: 0 0 3rem 0;
+  }
+  .container {
+    margin: 0 0 3rem 0;
+  }
+
+  .section {
+    padding: 2rem 0 4rem;
+  }
+
+  .section__subtitle {
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    margin: 0 0 3rem 0;
+  }
+}
+
+/* Aparelhos pequenos */
+@media screen and (max-width: 350px) {
+  .container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

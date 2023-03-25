@@ -1,0 +1,18 @@
+{% load static %} 
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/modal.css' %}" />
+{% endblock %} 
+
+<div class="modal fade" id="verSenhaModal{{senha.pk}}" tabindex="-1" aria-labelledby="verSenhaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-dark">
+        <div class="modal-header h-modal">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body c-modal text-center">
+            <h2 class="d-modal">{{senha.senha}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>

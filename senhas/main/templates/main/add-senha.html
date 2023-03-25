@@ -1,0 +1,39 @@
+{% load static %} 
+
+<div class="modal fade" id="addSenhaModal" tabindex="-1" aria-labelledby="addSenhaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="addSenhaModalLabel">Adicionar senha</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'add_senha' %}" id="add-form">
+          {% csrf_token %}
+          <div class="input-group mb-4">
+            {{form.email}}
+          </div>
+          <div class="input-group mb-4">
+            {{form.senha}}
+          <span class="input-group-text"><i class="bi bi-eye-fill form-visibilidade" id="password-button" onclick="showPassword();"></i></span>
+          </div>
+          <div class="input-group mb-4">
+            {{form.categoria}}
+          </div>
+          <div class="d-grid">
+            <input
+            class="btn btn-color"
+            type="submit"
+            value="Adicionar"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block script %}
+  <script src="{% static 'js/senha.js' %}"></script>
+{% endblock %}
+

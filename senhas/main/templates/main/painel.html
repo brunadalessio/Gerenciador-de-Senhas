@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %} 
+{% load static %} 
+
+{% block title %} Painel {% endblock %} 
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/card.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<div class="text-center mt-3">
+  <button type="button" class="btn btn-color" data-bs-toggle="modal" data-bs-target="#addSenhaModal"><i class="bi bi-plus"></i> Adicionar senha</a></button>
+</div>
+<section class="section senhas">
+  <!-- Alerts -->
+  {% for msg in messages %}
+    {% if 'success' == msg.tags %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% else %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+  {% endfor %}
+  <!-- Inicio do conteúdo -->
+  <div class="row">
+    {% for senha in senhas %}
+      <div class="col-md-4">
+          <div class="card p-3 mb-4">
+              <div class="c-header d-flex justify-content-between">
+                  <div class="d-flex flex-row align-items-center">
+                    <!-- Header: categoria, data criada -->
+                      <div class="badge-bg"> <i class="bi bi-shield-lock"></i> </div>
+                      <div class="ms-2 c-detalhes">
+                          <h6 class="mb-0">{{senha.categoria}}</h6> <span>{{senha.data | timesince }} atrás </span>
+                      </div>
+                  </div>
+                  <!-- Menu para editar/deletar a senha -->
+                  <div class="menu"> 
+                      <div class="btn-group">
+                        <button type="button" class="btn bi bi-three-dots-vertical menu" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'editar_senha' senha.pk %}" data-bs-toggle="modal" data-bs-target="#editSenhaModal{{senha.pk}}"><i class="bi bi-pencil-fill"></i> Editar</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item btn-deletar" href="{% url 'deletar_senha' senha.pk %}"><i class="bi bi-trash-fill"></i> Deletar</a></li>
+                        </ul>
+                      </div>
+                  </div>
+              </div>
+              <!-- Conteúdo das senhas do usuário: e-mail, ver senha da conta -->
+              <div class="c-conteudo mt-5">
+                <div class="input-group mb-4">
+                  <input class='form-control' type="email" name="email" value="{{senha.email}}" disabled readonly/>
+                </div>
+                <div class="d-grid">
+                  <button class="btn btn-color" role="button" data-bs-toggle="modal" data-bs-target="#verSenhaModal{{senha.pk}}"><i class="bi bi-eye-fill"></i> Ver senha</a></a>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- INCLUDE para os Modals de editar/ver senhas -->
+        {% include 'main/edit-senha.html' %}
+        {% include 'main/ver-senha.html' %}
+        {% endfor %}
+        {% if not senhas %}
+        <div class="text-center">
+            <h3 class="mb-5">Você não adicionou nenhuma senha ainda. </h1>
+        </div>
+        {% endif%}
+      </div>
+  </div>
+</section>
+<!-- INCLUDE para o modal de adicionar -->
+{% include 'main/add-senha.html' %}
+{% endblock %} 

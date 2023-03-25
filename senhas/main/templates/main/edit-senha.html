@@ -1,0 +1,37 @@
+{% load static %} 
+
+<div class="modal fade" id="editSenhaModal{{senha.pk}}" tabindex="-1" aria-labelledby="editSenhaModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="editSenhaModalLabel">Editar dados da conta: {{senha.categoria}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/editar/{{senha.id}}" id="editar-form{{senha.id}}">
+          <!-- Preservar os dados atuais  -->
+          <input type="hidden" class="form-control" name="categoria" value="{{senha.categoria}}">
+          {% csrf_token %}
+          <div class="input-group mb-4">
+            <input type="email" class="form-control" name="email" value="{{senha.email}}" maxlength="320"/>
+          </div>
+          <div class="input-group mb-4">
+            <input type="password" class="form-control" name="senha" value="{{senha.senha}}" maxlength="127" id="password-{{senha.id}}"/>
+            <span class="input-group-text"><i class="bi bi-eye-fill form-visibilidade" id="password-button-{{ senha.id }}" onclick="showMultiplePassword({{senha.id}});"></i></span>
+          </div>
+          <div class="d-grid">
+            <input
+            class="btn btn-color"
+            type="submit"
+            value="Editar"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block script %}
+  <script src="{% static 'js/senha.js' %}"></script>
+{% endblock %}

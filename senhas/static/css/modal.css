@@ -1,0 +1,53 @@
+.h-modal {
+    border-bottom: 0 none;
+}
+
+.c-modal {
+    word-wrap: break-word; 
+    max-width: 450px; 
+    padding: 0 0 2.5rem 2.5rem;
+}
+
+/* Aparelhos grandes */
+
+@media screen and (max-width: 992px) {
+    .c-modal {
+        padding: 1.8rem;
+    }
+    .d-modal {
+        font-size: 24px;
+    }
+}
+  
+  /* Aparelhos médios */
+  @media screen and (max-width: 768px) {
+    .c-modal {
+        padding: 1.8rem;
+    }
+
+    .d-modal {
+        font-size: 24px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .c-modal {
+        padding: 1.8rem;
+    }
+
+    .d-modal {
+        font-size: 24px;
+    }
+  }
+  
+  /* Aparelhos pequenos */
+  @media screen and (max-width: 350px) {
+    .c-modal {
+        padding: 1.8rem;
+    }
+    
+    .d-modal {
+        font-size: 24px;
+    }
+  }
+  

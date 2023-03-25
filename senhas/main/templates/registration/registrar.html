@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %} 
+{% load static %} 
+
+{% block title %} Criar uma conta {% endblock %} 
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<section class="section registrar">
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 form-titulo">
+            Nunca mais perca <br />
+            <span class="form-destaque">sua senha!</span>
+          </h1>
+          <p class="form-descricao">
+            Esse é um sistema de gerenciamento de senhas, você pode salvar todas
+            as suas senhas de um jeito totalmente seguro e rápido.
+          </p>
+        </div>
+        
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          {% if form.errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+              {% for error in form.username.errors %}
+                <li>{{error}}</li>
+              {% endfor %}
+              {% for error in form.email.errors %}
+                <li>{{error}}</li>
+              {% endfor %}
+              {% for error in form.password2.errors %}
+                <li>{{error}}</li>
+              {% endfor %}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+          <div class="card">
+            <div class="card-body py-5 px-md-5 togglePassword">
+              <form method="POST" action="." id="registrar-form">
+                {% csrf_token %}
+                <div class="form-outline mb-4">{{form.email}}</div>
+                <div class="form-outline mb-4">{{form.username}}</div>
+                <div class="input-group mb-4">
+                  {{form.password1}}
+                  <span class="input-group-text"><i class="bi bi-eye-fill form-visibilidade" id="password-button" onclick="showPassword()"></i></span>
+                </div>
+                <div class="input-group mb-4">
+                  {{form.password2}}
+                  <span class="input-group-text"><i class="bi bi-eye-fill form-visibilidade" id="confirmPassword-button" onclick="showConfirmPassword()"></i></span>
+                </div>
+                <div class="d-grid">
+                  <input
+                    class="btn btn-color"
+                    type="submit"
+                    value="Registrar"
+                  />
+                </div>
+                <div class="form-card-footer">
+                  <p>
+                    Já possui uma conta?
+                    <a class="form-link" href="/login">Entrar</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% block script %}
+  <script src="{% static 'js/senha.js' %}"></script>
+{% endblock %}
+{% endblock %}

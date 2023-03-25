@@ -1,0 +1,57 @@
+.card {
+    height: 260px;
+    color: #3c5464;
+}
+
+.c-detalhes {
+    max-width: 250px;
+}
+
+.c-detalhes span {
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.badge-bg {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    background-color: #eee;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.c-conteudo {
+    max-width: 350px;
+    padding: 0 25px 0 25px;
+}
+
+.c-header {
+    padding-top: 10px;
+}
+
+.menu {
+    font-size: 22px;
+}
+
+.menu:hover {
+    color: #aad4da;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    color: var(--bs-btn-active-color);
+    background-color: var(--bs-btn-active-bg);
+    border-color: #fff;
+}
+
+.btn-deletar,
+.btn-deletar:hover {
+    color: #dc3545;
+}
+
+.btn-deletar:focus {
+    color: #fff;
+}
